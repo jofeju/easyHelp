@@ -1,0 +1,104 @@
+.left-panel {
+    float: left;
+    width: 350px;
+    height: 600px;
+    min-width: 250px;
+    max-width: 350px;
+    margin-bottom: 0;
+}
+
+.login-panel {
+    margin: auto;
+    height: 230px;
+    width: 500px;
+}
+
+.signin-button {
+    float: right;
+    margin-right: 10px;
+}
+
+.menu-bar {
+    height: 35px;
+}
+
+.crud input {
+    width: 500px;
+}
+
+.crud > .p-datepicker {
+    width: 500px;
+}
+
+.crud > .ui-inputnumber {
+    width: 500px;
+}
+
+.crud > .ui-selectonemenu {
+    width: 486px;
+}
+
+.login {
+    padding-top: 17px;
+}
+
+.login input {
+    width: 300px;
+}
+
+.label-input {
+    padding-bottom: 10px;
+    width: 100%;
+    height: 40px;
+}
+
+.label-input > label {
+    float: left;
+    margin-left: 10px;
+    max-width: 250px;
+}
+
+.label-input > input {
+    float: right;
+    margin-right: 10px;
+}
+
+.label-input > .p-datepicker {
+    float: right;
+    margin-right: 20px;
+}
+
+.label-input > .ui-inputnumber {
+    float: right;
+    margin-right: 20px;
+}
+
+.label-input > .ui-selectonemenu {
+    float: right;
+    margin-right: 10px;
+}
+
+.center {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.crud-panel {
+    width: 900px;
+    height: 900px;
+}
+
+.dataTable {
+    padding-bottom: 17px;
+    max-height: 500px;
+}
+
+.button-group-crud {
+    float: right;
+    padding-left: 17px;
+}
+
+.home-button {
+    float: right;
+}

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../style/custom-style.css"/>
+    <title>Easy Help</title>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true">
+            <p:autoUpdate/>
+        </p:growl>
+
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
+                  showHeader="false">
+            <!--            <p:graphicImage name="images/loading.gif"/>-->
+            <p:outputLabel value="Carregando..."/>
+        </p:dialog>
+
+        <p:panel styleClass="login-panel" header="Login">
+            <div class="center login">
+                <div class="label-input">
+                    <p:outputLabel for="userName" value="Usuário: "/>
+                    <p:inputText id="userName" title="Usuário" value="#{loginView.login}"
+                                 required="true" label="Usuário" autocomplete="off"/>
+                </div>
+                <div class="label-input">
+                    <p:outputLabel for="userPassWord" value="Senha: "/>
+                    <p:password id="userPassWord" title="Senha" value="#{loginView.password}"
+                                required="true" label="Senha"/>
+                </div>
+                <p:commandButton styleClass="signin-button" value="Entrar" action="#{loginView.signIn()}"
+                                 update="@form"/>
+            </div>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../style/custom-style.css"/>
+    <title>Easy Help</title>
+</h:head>
+<h:body>
+    <script src="js/javascript.js"></script>
+    <h:form>
+        <p:commandButton styleClass="home-button" action="/restricted/index?faces-redirect=true" icon="fa fa-home"/>
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+        <p:growl id="growl" showDetail="true" sticky="true">
+            <p:autoUpdate/>
+        </p:growl>
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
+                  showHeader="false">
+            <!--            <p:graphicImage name="images/loading.gif"/>-->
+            <p:outputLabel value="Carregando..."/>
+        </p:dialog>
+
+        <p:inputText placeholder="Jogo" value="#{cardSearchView.idJogo}"/>
+        <p:commandButton icon="fa fa-search" action="#{cardSearchView.findCards()}"
+                         update="cardsTable"/>
+
+        <p:dataTable styleClass="dataTable" id="cardsTable" var="card"
+                     value="#{cardSearchView.cards}" paginator="true"
+                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                     rows="10" resizableColumns="true">
+            <f:facet name="header">
+                Cards
+            </f:facet>
+
+            <p:column headerText="ID">
+                <h:outputText value="#{card.id}"/>
+            </p:column>
+
+            <p:column headerText="Tipo">
+                <h:outputText value="#{card.type.textValue}"/>
+            </p:column>
+
+            <p:column headerText="Situação">
+                <h:outputText value="#{card.situation.textValue}"/>
+            </p:column>
+
+            <p:column headerText="Título">
+                <h:outputText value="#{card.titulo}"/>
+            </p:column>
+
+            <p:column headerText="Jogos">
+                <h:outputText value="#{card.jogo.displayName}"/>
+            </p:column>
+
+                        <p:column>
+                <p:commandButton update="@form" icon="fa fa-edit" title="Editar"
+                                 action="#{cardSearchView.editCard()}">
+                    <f:setPropertyActionListener value="#{card}"
+                                                 target="#{cardSearchView.selectedCard}"/>
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>

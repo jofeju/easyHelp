@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../style/custom-style.css"/>
+    <title>Easy Help</title>
+</h:head>
+<h:body>
+    <script src="js/javascript.js"></script>
+    <h:form>
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
+                  showHeader="false">
+            <!--            <p:graphicImage name="images/loading.gif"/>-->
+            <p:outputLabel value="Carregando..."/>
+        </p:dialog>
+
+        <p:menubar styleClass="menu-bar">
+            <p:submenu label="Cadastros" icon="fa fa-suitcase">
+                <p:menuitem value="Jogadores" icon="fa fa-user-md" action="/restricted/user?faces-redirect=true"
+                            disabled="#{not indexView.isLoggedUserAdmin()}"/>
+                <p:menuitem value="Jogos" icon="fa fa-gamepad" action="/restricted/jogo?faces-redirect=true"/>
+            </p:submenu>
+
+            <p:submenu label="Cards" icon="fa fa-clipboard">
+                <p:menuitem value="Listar" icon="fa fa-search"
+                            action="/restricted/card-search?faces-redirect=true"/>
+                <p:menuitem value="Novo" icon="fa fa-plus"
+                            action="/restricted/card?faces-redirect=true"/>
+                <p:menuitem value="Relatórios" icon="fa fa-book"
+                            action="/restricted/relatorio?faces-redirect=true"/>
+            </p:submenu>
+            <f:facet name="options">
+                <p:commandButton action="${indexView.signout()}" value="Signout"
+                                 icon="fa fa-sign-out" update="@form"/>
+            </f:facet>
+        </p:menubar>
+
+        <p:panel styleClass="left-panel">
+            <h:outputLabel for="userDisplayName" value="Usuário: "/>
+            <h:outputText id="userDisplayName" value="#{indexView.loggedUser.displayName}"/>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../style/custom-style.css"/>
+    <title>Easy Help</title>
+</h:head>
+<h:body>
+    <script src="js/javascript.js"></script>
+    <h:form id="formulario">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{userCreateView.init()}"/>
+        </f:metadata>
+        <p:growl id="growl" showDetail="true" sticky="true">
+            <p:autoUpdate/>
+        </p:growl>
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
+                  showHeader="false">
+            <!--            <p:graphicImage name="images/loading.gif"/>-->
+            <p:outputLabel value="Carregando..."/>
+        </p:dialog>
+
+        <p:panel styleClass="center crud-panel" header="Cadastro de Jogador">
+
+            <div class="label-input crud">
+                <p:outputLabel for="firstName" value="Nome: "/>
+                <p:inputText id="firstName" title="Nome" value="#{userCreateView.firstName}" onblur="validateLetters(this.value)"
+                             required="true" label="Nome" autocomplete="off"/>
+            </div>
+
+            <div class="label-input crud">
+                <p:outputLabel for="lastName" value="Sobrenome: "/>
+                <p:inputText id="lastName" title="Sobrenome" value="#{userCreateView.lastName}" onblur="validateLetters(this.value)"
+                             required="true" label="Sobrenome" autocomplete="off"/>
+            </div>
+
+            <div class="label-input crud">
+                <p:outputLabel for="cpf" value="CPF: "/>
+                <p:inputText id="cpf" title="CPF" value="#{userCreateView.cpf}"
+                             required="true"  label="CPF" autocomplete="off" onchange="validateCPF(this.value)" maxlength="11"/>
+            </div>
+
+            <div class="label-input crud">
+                <p:outputLabel for="dataNascimento" value="Data Nascimento: "/>
+                <p:datePicker id="dataNascimento" value="#{userCreateView.birthDate}" monthNavigator="true" onblur="validateAgeUser(this.value)" maxlength="10"
+                              pattern="dd/MM/yyyy" required="true" autocomplete="off"/>
+            </div>
+
+            <div class="label-input crud">
+                <p:outputLabel for="login" value="Usuário: "/>
+                <p:inputText id="login" title="Usuário" value="#{userCreateView.login}" 
+                             required="true" label="Usuário" autocomplete="off"/>
+            </div>
+
+            <div class="label-input crud">
+                <p:outputLabel for="password" value="Senha: "/>
+                <p:password id="password" title="Senha" value="#{userCreateView.password}" 
+                            required="true" label="Data Nascimento" autocomplete="off"/>
+            </div>
+
+            <div class="label-input crud">
+                <p:outputLabel for="email" value="Email: "/>
+                <p:inputText id="email" title="Email" value="#{userCreateView.email}" onblur="validateEmail(this.value)"
+                             required="true" label="Email" autocomplete="off"/>
+            </div>
+
+            <div class="button-group-crud">
+                <p:commandButton id="botaoSalvar" icon="fa fa-check" value="Salvar" action="#{userCreateView.save()}"
+                                 disabled="#{userCreateView.saveDisabled}" update="@form"/>
+                <p:commandButton icon="fa fa-close" value="Cancelar" action="#{userCreateView.cancel()}"
+                                 immediate="true"/>
+            </div>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

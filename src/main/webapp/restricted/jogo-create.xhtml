@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../style/custom-style.css"/>
+    <title>Easy Help</title>
+</h:head>
+<h:body>
+    <script src="js/javascript.js"></script>
+    <h:form id="formulario">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{jogoCreateView.init()}"/>
+        </f:metadata>
+        <p:growl id="growl" showDetail="true" sticky="true">
+            <p:autoUpdate/>
+        </p:growl>
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
+                  showHeader="false">
+            <!--            <p:graphicImage name="images/loading.gif"/>-->
+            <p:outputLabel value="Carregando..."/>
+        </p:dialog>
+
+        <p:panel styleClass="center crud-panel" header="Cadastro de Jogos">
+
+            <div class="label-input crud">
+                <p:outputLabel for="ID" value="ID "/>
+                <p:inputText id="ID" title="ID" value="#{jogoCreateView.id}" 
+                             required="true" label="ID" autocomplete="off"/>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="nome" value="Nome: "/>
+                <p:inputText id="nome" title="Nome" value="#{jogoCreateView.nome}" 
+                             required="true" label="Nome" autocomplete="off"/>
+            </div>
+
+            <div class="label-input crud">
+                <p:outputLabel for="desenvolvedor" value="Desenvolvedor: "/>
+                <p:inputText id="desenvolvedor" title="Desenvolvedor" value="#{jogoCreateView.desenvolvedor}" 
+                             required="true" label="Desenvolvedor" autocomplete="off"/>
+            </div>
+
+            <div class="button-group-crud">
+                <p:commandButton id="botaoSalvar" icon="fa fa-check" value="Salvar" action="#{jogoCreateView.save()}"
+                                 disabled="#{jogoCreateView.saveDisabled}" update="@form"/>
+                <p:commandButton icon="fa fa-close" value="Cancelar" action="#{jogoCreateView.cancel()}"
+                                 immediate="true"/>
+            </div>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

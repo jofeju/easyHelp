@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../style/custom-style.css"/>
+    <title>Easy Help</title>
+</h:head>
+<h:body>
+    <script src="js/javascript.js"></script>
+    <h:form id="formulario">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{cardEditView.init()}"/>
+        </f:metadata>
+        <p:growl id="growl" showDetail="true" sticky="true">
+            <p:autoUpdate/>
+        </p:growl>
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
+                  showHeader="false">
+            <!--            <p:graphicImage name="images/loading.gif"/>-->
+            <p:outputLabel value="Carregando..."/>
+        </p:dialog>
+
+        <p:panel styleClass="center crud-panel" header="Edição de Ordem de serviço">
+            <div class="label-input crud">
+                <p:outputLabel for="id" value="ID: "/>
+                <p:inputText id="id" title="ID" value="#{cardEditView.id}"
+                             required="true" label="ID" autocomplete="off" disabled="true"/>
+            </div>
+
+            <h:panelGrid columns="1" cellpadding="5">
+                <p:outputLabel for="type" value="Prioridade: "/>
+                <p:selectOneRadio id="type" value="#{cardEditView.type}" required="true">
+                    <f:selectItems value="${cardEditView.types}" var="type" itemValue="#{type}"
+                                   itemLabel="#{type.textValue}"/>
+                </p:selectOneRadio>
+            </h:panelGrid>
+
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="situation" value="Situação: "/>
+                <p:selectOneRadio id="situation" value="#{cardEditView.situation}" required="true"
+                                  layout="grid" columns="2">
+                    <f:selectItems value="${cardEditView.situationTypes}" var="type" itemValue="#{type}"
+                                   itemLabel="#{type.textValue}"/>
+                </p:selectOneRadio>
+            </h:panelGrid>
+
+            <div class="label-input crud">
+                <p:outputLabel for="titulo" value="Título: "/>
+                <p:inputText id="titulo" title="titulo" value="#{cardEditView.titulo}"
+                             required="true" label="titulo" autocomplete="off"/>
+            </div>
+
+            <div class="label-input crud">
+                <p:outputLabel for="descricao" value="Descrição: "/>
+                <p:inputText id="descricao" title="Descricao" value="#{cardEditView.descricao}"
+                             required="true" label="Descricao" autocomplete="off"/>
+            </div>
+
+            <div class="label-input crud">
+                <p:outputLabel for="game" value="Jogo: "/>
+                <p:selectOneMenu id="game" autoWidth="false"
+                                 value="#{cardEditView.jogo}"
+                                 effect="fade" var="c" filter="true" filterMatchMode="startsWith"
+                                 converter="jogoConverter" required="true">
+                    <f:selectItem itemLabel="Selecione um" itemValue=""/>
+                    <f:selectItems value="#{cardEditView.jogos}" var="game"
+                                   itemLabel="#{card.jogo.displayName}"
+                                   itemValue="#{jogo}"/>
+                    <p:column>
+                        <h:outputText value="#{c.displayName}"/>
+                    </p:column>
+                </p:selectOneMenu>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="player" value="Jogador: "/>
+                <p:selectOneMenu id="player" autoWidth="false"
+                                 value="#{cardEditView.jogador}"
+                                 effect="fade" var="t" filter="true" filterMatchMode="startsWith"
+                                 converter="personConverter" required="true">
+                    <f:selectItem itemLabel="Selecione um" itemValue=""/>
+                    <f:selectItems value="#{cardEditView.jogadores}" var="game"
+                                   itemLabel="#{jogador.displayName}"
+                                   itemValue="#{jogador}"/>
+                    <p:column>
+                        <h:outputText value="#{t.displayName}"/>
+                    </p:column>
+                </p:selectOneMenu>
+            </div>
+
+
+            <div class="button-group-crud">
+                <p:commandButton id="botaoSalvar" icon="fa fa-check" value="Salvar" action="#{cardEditView.save()}"
+                                 disabled="#{cardEditView.saveDisabled}" update="@form"/>
+                <p:commandButton icon="fa fa-close" value="Cancelar"
+                                 action="/restricted/card?faces-redirect=true"
+                                 immediate="true"/>
+            </div>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
