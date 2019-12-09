@@ -23,7 +23,7 @@
             <p:outputLabel value="Carregando..."/>
         </p:dialog>
 
-        <p:inputMask placeholder="CPF" value="#{userView.cpf}" mask="99999999999"/>
+        <p:inputMask placeholder="CPF" value="#{userView.cpf}" mask="999.999.999-99"/>
         <p:inputText placeholder="Nome" value="#{userView.firstName}"/>
         <p:commandButton icon="fa fa-search" action="#{userView.findUsers()}" update="usersTable"/>
         <p:dataTable styleClass="dataTable" id="usersTable" var="user" value="#{userView.users}" selectionMode="single"
