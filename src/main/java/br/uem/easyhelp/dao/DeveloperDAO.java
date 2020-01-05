@@ -51,7 +51,9 @@ public class DeveloperDAO extends GenericDAO<Developer> {
             StringBuilder sql = new StringBuilder();
             sql.append("from Developer c where c.status = 1 and");
             if (id != null) {
-                sql.append(" c.id = '").append(id).append("' and");
+                sql.append(" c.id like '%").append(id).append("' and");
+            }else {
+                sql.append(" c.id like '%' and");
             }
             sql.append(" c.nome like '").append(nome).append("%'");
             res = session.createQuery(sql.toString(), Developer.class).getResultList();

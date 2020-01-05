@@ -82,8 +82,11 @@ public class DeveloperSearchView implements Serializable {
         developers.clear();
         List<Developer> developers = null;
         try {
-            
+            if(id == null){
+            developers = developerController.findByNomeId("", nome);
+            }else{
             developers = developerController.findByNomeId(Integer.toString(id), nome);
+            }
             this.developers = developers;
         } catch (DeveloperException e) {
             FacesContext.getCurrentInstance()

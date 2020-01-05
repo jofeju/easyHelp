@@ -32,10 +32,35 @@
                              required="true" label="ID" autocomplete="off" disabled="true"/>
             </div>
             
+                       
             <div class="label-input crud">
                 <p:outputLabel for="nome" value="Nome: "/>
-                <p:inputText id="nome" title="Nome" value="#{developerEditView.nome}" onblur="validateLetters(this.value)"
+                <p:inputText id="nome" title="Nome" value="#{developerEditView.nome}" 
                              required="true" label="Nome" autocomplete="off"/>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="cidade" value="Cidade: "/>
+                <p:inputText id="cidade" title="Cidade" value="#{developerEditView.cidade}" 
+                             required="true" label="Cidade" autocomplete="off"/>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="pais" value="Pais:  "/>
+                <p:inputText id="pais" title="País" value="#{developerEditView.pais}" 
+                             required="true" label="Pais" autocomplete="off"/>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="email" value="E-mail:  "/>
+                <p:inputText id="email" title="E-mail" value="#{developerEditView.email}" 
+                             required="true" label="Email" autocomplete="off"/>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="telefone" value="Telefone:  "/>
+                <p:inputText id="telefone" title="Telefone" value="#{developerEditView.telefone}" 
+                             required="true" label="Telefone" autocomplete="off" placeholder="Somente números"/>
             </div>
 
             <div class="button-group-crud">

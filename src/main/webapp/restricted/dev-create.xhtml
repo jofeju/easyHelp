@@ -27,16 +27,35 @@
 
         <p:panel styleClass="center crud-panel" header="Cadastro de Empresas">
 
-            <div class="label-input crud">
-                <p:outputLabel for="ID" value="ID "/>
-                <p:inputText id="ID" title="ID" value="#{developerCreateView.id}" 
-                             required="true" label="ID" autocomplete="off"/>
-            </div>
-            
+           
             <div class="label-input crud">
                 <p:outputLabel for="nome" value="Nome: "/>
                 <p:inputText id="nome" title="Nome" value="#{developerCreateView.nome}" 
                              required="true" label="Nome" autocomplete="off"/>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="cidade" value="Cidade: "/>
+                <p:inputText id="cidade" title="Cidade" value="#{developerCreateView.cidade}" 
+                             required="true" label="Cidade" autocomplete="off"/>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="pais" value="Pais:  "/>
+                <p:inputText id="pais" title="País" value="#{developerCreateView.pais}" 
+                             required="true" label="Pais" autocomplete="off"/>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="email" value="E-mail:  "/>
+                <p:inputText id="email" title="E-mail" value="#{developerCreateView.email}" 
+                             required="true" label="Email" autocomplete="off"/>
+            </div>
+            
+            <div class="label-input crud">
+                <p:outputLabel for="telefone" value="Telefone:  "/>
+                <p:inputText id="telefone" title="Telefone" value="#{developerCreateView.telefone}" 
+                             required="true" label="Telefone" autocomplete="off" placeholder="Somente números"/>
             </div>
 
             <div class="button-group-crud">
