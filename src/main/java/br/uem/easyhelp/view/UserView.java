@@ -126,7 +126,7 @@ public class UserView implements Serializable {
         User user = selectedUser;
         if (selectedUser != null) {
             if (userController.delete(selectedUser)) {
-                users.remove(user);
+                selectedUser.setStatus(0);
                 FacesContext.getCurrentInstance()
                         .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                                 "Sucesso!", "Usuário deletado com sucesso."));

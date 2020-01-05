@@ -48,7 +48,7 @@ public abstract class GenericDAO<T> implements IGenericDAO<T> {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.delete(t);
+            session.update(t);
             transaction.commit();
             return true;
         } catch (Exception e) {

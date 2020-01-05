@@ -21,6 +21,8 @@ public class User extends Person implements Serializable {
     private UserType type;
     @OneToMany(mappedBy = "jogador", cascade = CascadeType.ALL)
     private List<Card> cards;
+    @Column(nullable = false)
+    private Integer status;
     
 
     public String getLogin() {
@@ -63,6 +65,16 @@ public class User extends Person implements Serializable {
         this.cards = cards;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+    
+    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,11 +85,12 @@ public class User extends Person implements Serializable {
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
                 type == user.type &&
-                Objects.equals(cards, user.cards);
+                Objects.equals(cards, user.cards) &&
+                Objects.equals(status, user.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), login, password, email, type, cards);
+        return Objects.hash(super.hashCode(), login, password, email, type, cards, status);
     }
 }

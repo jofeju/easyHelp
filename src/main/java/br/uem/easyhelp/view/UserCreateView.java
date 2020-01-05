@@ -29,6 +29,7 @@ public class UserCreateView implements Serializable {
     private UserType type;
     private Date birthDate;
     private List<Card> cards;
+    private Integer status;
 
     private boolean saveDisabled;
     private boolean initEnabled;
@@ -117,6 +118,15 @@ public class UserCreateView implements Serializable {
         return saveDisabled;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+    
+
     public void init() {
         if (initEnabled) {
             saveDisabled = false;
@@ -129,6 +139,7 @@ public class UserCreateView implements Serializable {
             type = null;
             birthDate = null;
             cards = null;
+            status = 1;
         }
     }
 
@@ -147,7 +158,8 @@ public class UserCreateView implements Serializable {
                 .withEmail(email)
                 .withFirstName(firstName)
                 .withLastName(lastName)
-                .withType(type).build();
+                .withType(type)
+                .withStatus(status).build();
 
         if (userController.insert(user)) {
             saveDisabled = true;

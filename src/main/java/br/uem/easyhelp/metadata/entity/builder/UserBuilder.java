@@ -20,6 +20,7 @@ public final class UserBuilder {
     private UserType type;
     private Date birthDate;
     private List<Card> cards;
+    private Integer status;
 
     private UserBuilder() {
     }
@@ -72,6 +73,11 @@ public final class UserBuilder {
         this.cards = cards;
         return this;
     }
+    
+    public UserBuilder withStatus(Integer status) {
+        this.status = status;
+        return this;
+    }
 
     public User build() {
         User user = new User();
@@ -84,6 +90,7 @@ public final class UserBuilder {
         user.setType(type);
         user.setBirthDate(birthDate);
         user.setCards(cards);
+        user.setStatus(status);
         return user;
     }
 }

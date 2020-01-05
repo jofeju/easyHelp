@@ -59,6 +59,7 @@ public class UserController implements Serializable {
     }
 
     public boolean delete(User user) {
+        user.setStatus(0);
         return dao.delete(user);
     }
 }
