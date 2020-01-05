@@ -86,7 +86,7 @@ public class UserDAO extends GenericDAO<User> {
             Transaction transaction = session.beginTransaction();
 
             StringBuilder sql = new StringBuilder();
-            sql.append("from User u where");
+            sql.append("from User u where u.status = 1 and");
             if (cpf != null && !cpf.isEmpty()) {
                 sql.append(" u.cpf = '").append(cpf).append("' and");
             }

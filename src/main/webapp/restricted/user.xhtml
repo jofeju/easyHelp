@@ -14,12 +14,11 @@
     <h:form>
         <p:commandButton styleClass="home-button" action="/restricted/index?faces-redirect=true" icon="fa fa-home"/>
         <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
-        <p:growl id="growl" showDetail="true" autoUpdate="true" sticky="true">
+        <p:growl id="growl" showDetail="true" sticky="true">
             <p:autoUpdate/>
         </p:growl>
         <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
                   showHeader="false">
-            <!--            <p:graphicImage name="images/loading.gif"/>-->
             <p:outputLabel value="Carregando..."/>
         </p:dialog>
 
