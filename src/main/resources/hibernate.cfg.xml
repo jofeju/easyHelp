@@ -15,5 +15,6 @@
     <mapping class="br.uem.easyhelp.metadata.entity.Jogo"/>
     <mapping class="br.uem.easyhelp.metadata.entity.Card"/>
     <mapping class="br.uem.easyhelp.metadata.entity.User"/>
+    <mapping class="br.uem.easyhelp.metadata.entity.Developer"/>
   </session-factory>
 </hibernate-configuration>

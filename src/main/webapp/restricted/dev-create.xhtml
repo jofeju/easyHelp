@@ -4,8 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <link type="text/css" rel="stylesheet" href="../style/custom-style.css"/>
     <title>Easy Help</title>
@@ -14,7 +13,7 @@
     <script src="js/javascript.js"></script>
     <h:form id="formulario">
         <f:metadata>
-            <f:event type="preRenderView" listener="#{jogoCreateView.init()}"/>
+            <f:event type="preRenderView" listener="#{developerCreateView.init()}"/>
         </f:metadata>
         <p:growl id="growl" showDetail="true" sticky="true">
             <p:autoUpdate/>
@@ -26,30 +25,24 @@
             <p:outputLabel value="Carregando..."/>
         </p:dialog>
 
-        <p:panel styleClass="center crud-panel" header="Cadastro de Jogos">
+        <p:panel styleClass="center crud-panel" header="Cadastro de Empresas">
 
             <div class="label-input crud">
                 <p:outputLabel for="ID" value="ID "/>
-                <p:inputText id="ID" title="ID" value="#{jogoCreateView.id}" 
+                <p:inputText id="ID" title="ID" value="#{developerCreateView.id}" 
                              required="true" label="ID" autocomplete="off"/>
             </div>
             
             <div class="label-input crud">
                 <p:outputLabel for="nome" value="Nome: "/>
-                <p:inputText id="nome" title="Nome" value="#{jogoCreateView.nome}" 
-                             required="true" label="Nome" autocomplete="off">
-            </div>
-
-            <div class="label-input crud">
-                <p:outputLabel for="desenvolvedor" value="Desenvolvedor: "/>
-                <p:inputText id="desenvolvedor" title="Desenvolvedor" value="#{jogoCreateView.desenvolvedor}" 
-                             required="true" label="Desenvolvedor" autocomplete="off"/>
+                <p:inputText id="nome" title="Nome" value="#{developerCreateView.nome}" 
+                             required="true" label="Nome" autocomplete="off"/>
             </div>
 
             <div class="button-group-crud">
-                <p:commandButton id="botaoSalvar" icon="fa fa-check" value="Salvar" action="#{jogoCreateView.save()}"
-                                 disabled="#{jogoCreateView.saveDisabled}" update="@form"/>
-                <p:commandButton icon="fa fa-close" value="Cancelar" action="#{jogoCreateView.cancel()}"
+                <p:commandButton id="botaoSalvar" icon="fa fa-check" value="Salvar" action="#{developerCreateView.save()}"
+                                 disabled="#{developerCreateView.saveDisabled}" update="@form"/>
+                <p:commandButton icon="fa fa-close" value="Cancelar" action="#{developerCreateView.cancel()}"
                                  immediate="true"/>
             </div>
         </p:panel>

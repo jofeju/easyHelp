@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../style/custom-style.css"/>
+    <title>Easy Help</title>
+</h:head>
+<h:body>
+    <script src="js/javascript.js"></script>
+    <h:form>
+        <p:commandButton styleClass="home-button" action="/restricted/index?faces-redirect=true" icon="fa fa-home"/>
+        <p:growl id="growl" showDetail="true" sticky="true">
+            <p:autoUpdate/>
+        </p:growl>
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
+                  showHeader="false">
+            <p:outputLabel value="Carregando..."/>
+        </p:dialog>
+
+        <p:inputText placeholder="ID" value="#{developerSearchView.id}"/>
+        <p:inputText placeholder="Nome" value="#{developerSearchView.nome}"/>
+        <p:commandButton icon="fa fa-search" action="#{developerSearchView.findDevelopers()}" update="developersTable"/>
+        <p:dataTable styleClass="dataTable" id="developersTable" var="developer" value="#{developerSearchView.developers}"
+                     selectionMode="single"
+                     selection="#{developerSearchView.selectedDeveloper}" rowKey="#{developer.id}" paginator="true"
+                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                     rows="10" resizableColumns="true">
+            <f:facet name="header">
+                Empresas
+            </f:facet>
+            <p:column headerText="ID">
+                <h:outputText value="#{developer.id}"/>
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{developer.nome}"/>
+            </p:column>
+
+
+        </p:dataTable>
+
+        <div class="button-group-crud">
+            <p:commandButton icon="fa fa-plus-square" action="#{developerSearchView.createDeveloper()}" value="Adicionar"/>
+            <p:commandButton icon="fa fa-edit" value="Editar" action="#{developerSearchView.editDeveloper()}"/>
+            <p:commandButton icon="fa fa-remove" value="Remover" action="#{developerSearchView.deleteDeveloper()}"
+                             update="developersTable"/>
+        </div>
+    </h:form>
+</h:body>
+</html>
