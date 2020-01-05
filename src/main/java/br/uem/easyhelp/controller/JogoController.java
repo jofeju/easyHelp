@@ -39,6 +39,7 @@ public class JogoController implements Serializable {
     }
 
     public boolean delete(Jogo jogo) {
+        jogo.setStatus(0);
         return dao.delete(jogo);
     }
 

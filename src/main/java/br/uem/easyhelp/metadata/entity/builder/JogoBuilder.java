@@ -12,6 +12,7 @@ public final class JogoBuilder {
     private String id;
     private String nome;
     private String desenvolvedor;
+    private Integer status;
 
     private JogoBuilder() {
     }
@@ -34,12 +35,18 @@ public final class JogoBuilder {
         this.desenvolvedor = desenvolvedor;
         return this;
     }
+    
+    public JogoBuilder withStatus(Integer status) {
+        this.status = status;
+        return this;
+    }
 
     public Jogo build() {
         Jogo jogo = new Jogo();
         jogo.setId(id);
         jogo.setNome(nome);
         jogo.setDesenvolvedor(desenvolvedor);
+        jogo.setStatus(status);
         return jogo;
     }
 }

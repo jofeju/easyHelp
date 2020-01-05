@@ -41,7 +41,7 @@ public class JogoDAO extends GenericDAO<Jogo> {
             Transaction transaction = session.beginTransaction();
 
             StringBuilder sql = new StringBuilder();
-            sql.append("from Jogo c where");
+            sql.append("from Jogo c where c.status = 1 and");
             if (id != null && !id.isEmpty()) {
                 sql.append(" c.id = '").append(id).append("' and");
             }

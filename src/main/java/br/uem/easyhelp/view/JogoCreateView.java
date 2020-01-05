@@ -24,6 +24,7 @@ public class JogoCreateView implements Serializable {
     private String id;
     private boolean saveDisabled;
     private boolean initEnabled;
+    private Integer status;
 
     private JogoController jogoController;
 
@@ -76,10 +77,19 @@ public class JogoCreateView implements Serializable {
         if (initEnabled) {
             saveDisabled = false;
             nome = null;
+            status = 1;
             desenvolvedor = null;
         }
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+    
     public void save() {
         initEnabled = false;
 
@@ -87,6 +97,7 @@ public class JogoCreateView implements Serializable {
                 .withId(id)
                 .withNome(nome)
                 .withDesenvolvedor(desenvolvedor)
+                .withStatus(status)
                 .build();
 
         if (jogoController.insert(jogo)) {

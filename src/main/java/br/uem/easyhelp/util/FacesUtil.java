@@ -14,6 +14,10 @@ public class FacesUtil {
     public static String JOGO_EDIT_FACE = "/restricted/jogo-edit";
     public static String CARD_SEARCH_FACE = "/restricted/card";
     public static String CARD_EDIT_FACE = "/restricted/card-edit";
+    public static String DEV_FACE = "/restricted/dev";
+    public static String DEV_CREATE_FACE = "/restricted/dev-create";
+    public static String DEV_EDIT_FACE = "/restricted/dev-edit";
+    
 
     public static void displayError(String text) {
         FacesContext.getCurrentInstance()

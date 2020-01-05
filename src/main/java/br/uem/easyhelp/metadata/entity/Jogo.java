@@ -18,6 +18,8 @@ public class Jogo implements Serializable {
     private String desenvolvedor;
     @OneToMany(mappedBy = "jogo", cascade = CascadeType.ALL)
     private List<Card> cards;
+    @Column (nullable = false)
+    private Integer status;
 
    
     public String getId() {
@@ -55,7 +57,16 @@ public class Jogo implements Serializable {
     public void setCards(List<Card> cards) {
         this.cards = cards;
     }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
     
+        
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,11 +76,12 @@ public class Jogo implements Serializable {
         return Objects.equals(id, jogo.id) &&
                 Objects.equals(nome, jogo.nome) &&
                 Objects.equals(desenvolvedor, jogo.desenvolvedor) &&
-                Objects.equals(cards, jogo.cards);
+                Objects.equals(cards, jogo.cards) &&
+                Objects.equals(status, jogo.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, nome, desenvolvedor, cards);
+        return Objects.hash(super.hashCode(), id, nome, desenvolvedor, cards, status);
     }
 }

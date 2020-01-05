@@ -106,7 +106,7 @@ public class JogoView implements Serializable {
         Jogo jogo = selectedJogo;
         if (selectedJogo != null) {
             if (jogoController.delete(selectedJogo)) {
-                jogos.remove(jogo);
+                selectedJogo.setStatus(0);
                 FacesContext.getCurrentInstance()
                         .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                                 "Sucesso!", "Jogo deletado com sucesso."));
