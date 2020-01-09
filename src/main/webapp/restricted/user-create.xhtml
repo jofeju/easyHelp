@@ -42,9 +42,9 @@
             <div class="label-input crud">
                 <p:outputLabel for="cpf" value="CPF: "/>
                 <p:inputText id="cpf" title="CPF" value="#{userCreateView.cpf}"
-                             required="true"  label="CPF" autocomplete="off" onchange="validateCPF(this.value)" maxlength="11"/>
+                             required="true"  label="CPF" autocomplete="off"  maxlength="11"/>
             </div>
-
+            
             <div class="label-input crud">
                 <p:outputLabel for="dataNascimento" value="Data Nascimento: "/>
                 <p:datePicker id="dataNascimento" value="#{userCreateView.birthDate}" monthNavigator="true" onblur="validateAgeUser(this.value)" maxlength="10"

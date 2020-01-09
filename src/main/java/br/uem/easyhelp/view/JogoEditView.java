@@ -107,6 +107,7 @@ public class JogoEditView implements Serializable {
                 .withId(id)
                 .withNome(nome)
                 .withDesenvolvedor(desenvolvedor)
+                .withStatus(1)
                 .build();
 
         if (jogoController.update(jogo)) {

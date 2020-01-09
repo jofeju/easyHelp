@@ -87,10 +87,10 @@ public final class UserBuilder {
         user.setFirstName(firstName);
         user.setEmail(email);
         user.setLastName(lastName);
-        user.setType(type);
+        user.setType(UserType.DEFAULT);
         user.setBirthDate(birthDate);
         user.setCards(cards);
-        user.setStatus(status);
+        user.setStatus(1);
         return user;
     }
 }
