@@ -1,18 +1,16 @@
 package br.uem.easyhelp.metadata.entity.builder;
 
+import br.uem.easyhelp.metadata.entity.Developer;
 import br.uem.easyhelp.metadata.entity.Jogo;
-import br.uem.easyhelp.metadata.entity.Card;
-
-import java.util.List;
 
 /**
  * @author Douglas
  */
 public final class JogoBuilder {
-    private String id;
+    private Integer id;
     private String nome;
-    private String desenvolvedor;
     private Integer status;
+    private Developer developer;
 
     private JogoBuilder() {
     }
@@ -21,7 +19,7 @@ public final class JogoBuilder {
         return new JogoBuilder();
     }
 
-    public JogoBuilder withId(String id) {
+    public JogoBuilder withId(Integer id) {
         this.id = id;
         return this;
     }
@@ -31,13 +29,13 @@ public final class JogoBuilder {
         return this;
     }
 
-    public JogoBuilder withDesenvolvedor(String desenvolvedor) {
-        this.desenvolvedor = desenvolvedor;
+    public JogoBuilder withStatus(Integer status) {
+        this.status = status;
         return this;
     }
     
-    public JogoBuilder withStatus(Integer status) {
-        this.status = status;
+    public JogoBuilder withDeveloper(Developer developer) {
+        this.developer = developer;
         return this;
     }
 
@@ -45,7 +43,7 @@ public final class JogoBuilder {
         Jogo jogo = new Jogo();
         jogo.setId(id);
         jogo.setNome(nome);
-        jogo.setDesenvolvedor(desenvolvedor);
+        jogo.setDeveloper(developer);
         jogo.setStatus(status);
         return jogo;
     }

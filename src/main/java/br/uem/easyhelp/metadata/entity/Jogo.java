@@ -10,23 +10,25 @@ import java.util.Objects;
 public class Jogo implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 5, unique = true, nullable = false)
-    private String id;
+    private Integer id;
     @Column(length = 50, nullable = false)
     private String nome;
-    @Column(length = 50, nullable = false)
-    private String desenvolvedor;
     @OneToMany(mappedBy = "jogo", cascade = CascadeType.ALL)
     private List<Card> cards;
     @Column (nullable = false)
     private Integer status;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false, name = "developer_id")
+    private Developer developer;
 
    
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,18 +39,15 @@ public class Jogo implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public String getDesenvolvedor() {
-        return desenvolvedor;
-    }
-
-    public void setDesenvolvedor(String desenvolvedor) {
-        this.desenvolvedor = desenvolvedor;
-    }
     
     public String getDisplayName() {
         return nome;// + " (" + desenvolvedor+")";
     }
+    
+    public String getDisplayDevName() {
+        return developer.getNome();
+    }
+    
     
     public List<Card> getCards() {
         return cards;
@@ -65,7 +64,15 @@ public class Jogo implements Serializable {
     public void setStatus(Integer status) {
         this.status = status;
     }
-    
+
+    public Developer getDeveloper() {
+        return developer;
+    }
+
+    public void setDeveloper(Developer developer) {
+        this.developer = developer;
+    }
+      
         
     @Override
     public boolean equals(Object o) {
@@ -75,13 +82,13 @@ public class Jogo implements Serializable {
         Jogo jogo = (Jogo) o;
         return Objects.equals(id, jogo.id) &&
                 Objects.equals(nome, jogo.nome) &&
-                Objects.equals(desenvolvedor, jogo.desenvolvedor) &&
                 Objects.equals(cards, jogo.cards) &&
-                Objects.equals(status, jogo.status);
+                Objects.equals(status, jogo.status) &&
+                Objects.equals(developer, jogo.developer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, nome, desenvolvedor, cards, status);
+        return Objects.hash(super.hashCode(), id, nome, cards, status, developer);
     }
 }

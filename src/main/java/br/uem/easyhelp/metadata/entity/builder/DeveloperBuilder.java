@@ -17,7 +17,7 @@ public final class DeveloperBuilder {
     private String cidade;
     private String pais;
     private String email;
-    private Integer telefone;
+    private Long telefone;
     private Integer status;
 
     private DeveloperBuilder() {
@@ -57,7 +57,7 @@ public final class DeveloperBuilder {
         return this;
     }
     
-    public DeveloperBuilder withTelefone(Integer telefone) {
+    public DeveloperBuilder withTelefone(Long telefone) {
         this.telefone = telefone;
         return this;
     }

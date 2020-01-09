@@ -26,7 +26,7 @@ public class DeveloperCreateView implements Serializable{
     private String cidade;
     private String pais;
     private String email;
-    private Integer telefone;
+    private Long telefone;
     private Integer status;
     
     private boolean saveDisabled;
@@ -81,11 +81,11 @@ public class DeveloperCreateView implements Serializable{
         this.email = email;
     }
 
-    public Integer getTelefone() {
+    public Long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(Long telefone) {
         this.telefone = telefone;
     }
 

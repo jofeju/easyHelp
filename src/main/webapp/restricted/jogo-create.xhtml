@@ -22,28 +22,32 @@
         <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
         <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
                   showHeader="false">
-            <!--            <p:graphicImage name="images/loading.gif"/>-->
             <p:outputLabel value="Carregando..."/>
         </p:dialog>
 
         <p:panel styleClass="center crud-panel" header="Cadastro de Jogos">
 
-            <div class="label-input crud">
-                <p:outputLabel for="ID" value="ID "/>
-                <p:inputText id="ID" title="ID" value="#{jogoCreateView.id}" 
-                             required="true" label="ID" autocomplete="off"/>
-            </div>
-            
+                       
             <div class="label-input crud">
                 <p:outputLabel for="nome" value="Nome: "/>
                 <p:inputText id="nome" title="Nome" value="#{jogoCreateView.nome}" 
                              required="true" label="Nome" autocomplete="off"/>
             </div>
-
+          
             <div class="label-input crud">
-                <p:outputLabel for="desenvolvedor" value="Desenvolvedor: "/>
-                <p:inputText id="desenvolvedor" title="Desenvolvedor" value="#{jogoCreateView.desenvolvedor}" 
-                             required="true" label="Desenvolvedor" autocomplete="off"/>
+                <p:outputLabel for="empresa" value="Empresa: "/>
+                <p:selectOneMenu id="empresa" autoWidth="false"
+                                 value="#{jogoCreateView.developer}"
+                                 effect="fade" var="c" filter="true" filterMatchMode="startsWith"
+                                 converter="empresaConverter" required="true">
+                    <f:selectItem itemLabel="Selecione um" itemValue=""/>
+                    <f:selectItems value="#{jogoCreateView.developers}"
+                                   itemLabel="#{jogo.displayDevName}"
+                                   itemValue="#{jogo.displayDevName}"/>
+                    <p:column>
+                        <h:outputText value="#{c.displayName}"/>
+                    </p:column>
+                </p:selectOneMenu>
             </div>
 
             <div class="button-group-crud">

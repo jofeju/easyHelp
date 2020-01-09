@@ -20,9 +20,8 @@ import java.util.Map;
 @Named
 @SessionScoped
 public class JogoEditView implements Serializable {
-    private String id;
+    private Integer id;
     private String nome;
-    private String desenvolvedor;
     private List<Card> cards;
 
     private boolean saveDisabled;
@@ -49,7 +48,6 @@ public class JogoEditView implements Serializable {
                     saveDisabled = false;
                     id = jogo.getId();
                     nome = jogo.getNome();
-                    desenvolvedor = jogo.getDesenvolvedor();
                 } catch (JogoException e) {
                     FacesContext.getCurrentInstance()
                             .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", e.getMessage()));
@@ -60,11 +58,11 @@ public class JogoEditView implements Serializable {
     }
     
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -74,14 +72,6 @@ public class JogoEditView implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getDesenvolvedor() {
-        return desenvolvedor;
-    }
-
-    public void setDesenvolvedor(String desenvolvedor) {
-        this.desenvolvedor = desenvolvedor;
     }
 
     public List<Card> getCards() {
@@ -106,7 +96,6 @@ public class JogoEditView implements Serializable {
         Jogo jogo = JogoBuilder.aJogo()
                 .withId(id)
                 .withNome(nome)
-                .withDesenvolvedor(desenvolvedor)
                 .withStatus(1)
                 .build();
 

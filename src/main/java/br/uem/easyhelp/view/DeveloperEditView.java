@@ -28,7 +28,7 @@ public class DeveloperEditView implements Serializable {
     private String cidade;
     private String pais;
     private String email;
-    private Integer telefone;
+    private Long telefone;
     private Integer status;
 
     private boolean saveDisabled;
@@ -108,11 +108,11 @@ public class DeveloperEditView implements Serializable {
         this.email = email;
     }
 
-    public Integer getTelefone() {
+    public Long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(Long telefone) {
         this.telefone = telefone;
     }
 
@@ -143,7 +143,7 @@ public class DeveloperEditView implements Serializable {
                 .withPais(pais)
                 .withEmail(email)
                 .withTelefone(telefone)
-                .withStatus(status)
+                .withStatus(1)
                 .build();
 
         if (developerController.update(developer)) {

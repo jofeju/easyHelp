@@ -1,19 +1,19 @@
 package br.uem.easyhelp.view.converter;
 
-import br.uem.easyhelp.metadata.entity.Jogo;
-
+import br.uem.easyhelp.metadata.entity.Developer;
+import java.io.Serializable;
+import java.util.Map;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import java.io.Serializable;
-import java.util.Map;
 
 /**
+ *
  * @author Douglas
  */
-@FacesConverter("jogoConverter")
-public class JogoConverter implements Converter, Serializable {
+@FacesConverter("empresaConverter")
+public class EmpresaConverter implements Converter, Serializable {
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
         if (s != null) {
@@ -25,7 +25,7 @@ public class JogoConverter implements Converter, Serializable {
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object o) {
         if (o != null && !"".equals(o)) {
-            Jogo entity = (Jogo) o;
+            Developer entity = (Developer) o;
 
             this.addAttribute(uiComponent, entity);
 
@@ -39,7 +39,7 @@ public class JogoConverter implements Converter, Serializable {
 
     }
 
-    protected void addAttribute(UIComponent component, Jogo o) {
+    protected void addAttribute(UIComponent component, Developer o) {
         String key = Integer.toString(o.getId());
         this.getAttributesFrom(component).put(key, o);
     }

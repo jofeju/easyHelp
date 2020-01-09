@@ -3,7 +3,6 @@ package br.uem.easyhelp.view;
 import br.uem.easyhelp.controller.CardController;
 import br.uem.easyhelp.metadata.entity.Jogo;
 import br.uem.easyhelp.metadata.entity.Card;
-import br.uem.easyhelp.metadata.entity.Person;
 import br.uem.easyhelp.metadata.entity.User;
 import br.uem.easyhelp.metadata.entity.builder.CardBuilder;
 import br.uem.easyhelp.metadata.type.CardSituationType;

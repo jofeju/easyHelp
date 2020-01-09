@@ -35,7 +35,7 @@ public class Developer implements Serializable {
     @Column(length = 50, nullable = false)
     private String email;
     @Column(length = 20, nullable = false)
-    private Integer telefone;
+    private Long telefone;
     @Column (nullable = false)
     private Integer status;
 
@@ -79,11 +79,11 @@ public class Developer implements Serializable {
         this.email = email;
     }
 
-    public Integer getTelefone() {
+    public Long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(Long telefone) {
         this.telefone = telefone;
     }
 
@@ -94,6 +94,10 @@ public class Developer implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+    
+    public String getDisplayName() {
+        return nome;// + " (" + desenvolvedor+")";
     }
     
         
