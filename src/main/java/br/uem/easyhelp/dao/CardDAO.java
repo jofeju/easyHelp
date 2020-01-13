@@ -20,17 +20,12 @@ public class CardDAO extends GenericDAO<Card> {
         super(Card.class);
     }
 
-    public List<Card> findCardsByUserAndJogoCriteria(String cpfJogador,
-                                                                       String idJogo) throws CardException {
+    public List<Card> findCardsByUserAndJogoCriteria(String cpfJogador,String idJogo) throws CardException {
         List<Card> res;
-
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-
             StringBuilder sql = new StringBuilder();
-            sql.append("select sor from Card sor")
-                    .append(" inner join sor.jogo jg")
-                    .append(" where");
+            sql.append("select sor from Card sor").append(" inner join sor.jogo jg").append(" where");
             if (idJogo != null && !idJogo.isEmpty()) {
                 sql.append("jg.id = '").append(idJogo).append("'");
             }
@@ -38,7 +33,6 @@ public class CardDAO extends GenericDAO<Card> {
         } catch (NoResultException ex) {
             throw new CardException("Nenhum card encontrado.", ex);
         }
-
         return res;
     }
 }
